@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">ExerciseChecker</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="HukinText">腹筋</string>
+    <string name="UdetateText">腕立て</string>
+    <string name="HaikinText">背筋</string>
+    <string name="RunningText">ランニング</string>
+    <string name="SquatText">スクワット</string>
+    <string name="AddDetail">新規入力</string>
+    <string name="hukkinHint">今日の腹筋回数を入力してください</string>
+    <string name="udetateHint">今日の腕立て回数を入力してください</string>
+    <string name="haikinHint">今日の背筋回数を入力してください</string>
+    <string name="runningHint">今日のランニング分数を入力してください</string>
+    <string name="squatHint">今日のスクワット回数を入力してください</string>
+    <string name="saveText">保存</string>
+    <string name="emptyText">データはありません</string>
+</resources>

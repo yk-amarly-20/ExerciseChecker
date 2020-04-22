@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <fragment
+        android:id="@+id/titleFragment"
+        android:name="com.example.exercisechecker.TitleFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout="@layout/fragment_title" />
+
+    <Button
+        android:id="@+id/hukkinButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:layout_marginBottom="28dp"
+        android:text="@string/HukinText"
+        app:layout_constraintBottom_toTopOf="@+id/udetateButton"
+        app:layout_constraintEnd_toEndOf="@+id/udetateButton"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/udetateButton"
+        app:layout_constraintTop_toBottomOf="@+id/titleFragment"
+        app:layout_constraintVertical_bias="0.696" />
+
+    <Button
+        android:id="@+id/udetateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/UdetateText"
+        app:layout_constraintBottom_toTopOf="@+id/haikinButton"
+        app:layout_constraintEnd_toEndOf="@+id/haikinButton"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/haikinButton"
+        app:layout_constraintTop_toBottomOf="@+id/hukkinButton" />
+
+    <Button
+        android:id="@+id/haikinButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="240dp"
+        android:text="@string/HaikinText"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleFragment"
+        app:layout_constraintVertical_bias="0.116" />
+
+    <Button
+        android:id="@+id/runningButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        android:text="@string/RunningText"
+        app:layout_constraintBottom_toTopOf="@+id/squatButton"
+        app:layout_constraintEnd_toEndOf="@+id/haikinButton"
+        app:layout_constraintStart_toStartOf="@+id/haikinButton"
+        app:layout_constraintTop_toBottomOf="@+id/haikinButton"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/squatButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="88dp"
+        android:text="@string/SquatText"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/runningButton"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/runningButton"
+        app:layout_constraintTop_toBottomOf="@+id/haikinButton"
+        app:layout_constraintVertical_bias="1.0" />
+</androidx.constraintlayout.widget.ConstraintLayout>
