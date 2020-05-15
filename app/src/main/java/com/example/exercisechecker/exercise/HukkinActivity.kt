@@ -37,12 +37,15 @@ class HukkinActivity : AppCompatActivity() {
         val database = sqlHelper.readableDatabase
 
         /*
-        ここ一番ハマった
+        ここ今回のアプリで一番ハマった
         rowid as _idとしなければいけない（なんでか知らんけど）
          */
         val c = database.query(DBContract.HukkinEntry.TABLE_NAME, arrayOf("rowid as _id", DBContract.HukkinEntry.COUNT, DBContract.HukkinEntry.DATE), null, null, null, null, null)
         c.moveToFirst()
 
+        /*
+        アダプターの作成
+        */
         val adapter = SimpleCursorAdapter(
             this,
             android.R.layout.simple_list_item_2,
@@ -51,6 +54,9 @@ class HukkinActivity : AppCompatActivity() {
             intArrayOf(android.R.id.text1, android.R.id.text2)
         )
 
+        /*
+        リストビューに表示
+        /
         val listView = findViewById<ListView>(R.id.hukkinList)
         listView.adapter = adapter
 

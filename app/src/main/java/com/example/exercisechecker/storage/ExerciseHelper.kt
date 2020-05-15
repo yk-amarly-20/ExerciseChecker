@@ -9,19 +9,25 @@ import com.example.exercisechecker.models.*
 import java.sql.SQLException
 
 class ExerciseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
+    /*
+    データベースにデータを挿入する実装
+    各テーブルに対して一個ずつ実装する
+    */
     @Throws(SQLiteException::class)
     fun insertHukkin(hukkin: HukkinModel): Boolean {
-        val database = writableDatabase
+        val database = writableDatabase    // データベースを引っ張ってくる
 
         val values = ContentValues()
         values.put(DBContract.HukkinEntry.COUNT, hukkin.count)
         values.put(DBContract.HukkinEntry.DATE, hukkin.date)
 
+        // この辺正直あんまりわかってない、勉強が必要
         val rowId = database.insert(DBContract.HukkinEntry.TABLE_NAME, null, values)
 
         return true
     }
 
+    // 以下hukkinの場合とほぼ同じ
     @Throws(SQLException::class)
     fun insertUdetate(udetate: UdetateModel): Boolean {
         val database = writableDatabase
@@ -74,6 +80,8 @@ class ExerciseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         return true
     }
 
+    // onCreateは 全てのテーブルに対して実行
+    // CREATE_SENTについては以下を参照
     override fun onCreate(database: SQLiteDatabase?) {
         database?.execSQL(HUKKIN_CREATE_SENT)
         database?.execSQL(UDETATE_CREATE_SENT)
@@ -81,7 +89,8 @@ class ExerciseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         database?.execSQL(RUNNING_CREATE_SENT)
         database?.execSQL(SQUAT_CREATE_SENT)
     }
-
+    
+    // 上に同じ
     override fun onUpgrade(database: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
         database?.execSQL(HUKKIN_DELETE_SENT)
         database?.execSQL(HUKKIN_CREATE_SENT)
@@ -103,6 +112,7 @@ class ExerciseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         const val DATABASE_NAME = "EXERCISE.db"
         const val DATABASE_VERSION = 1
 
+        // 各種類のsql文だけど、多分もっと賢い実装ありそう
         private val HUKKIN_CREATE_SENT =
             "CREATE TABLE " + DBContract.HukkinEntry.TABLE_NAME + " (_id INTEGER PRIMARY KEY AUTOINCREMENT " +
                     DBContract.HukkinEntry.COUNT + " INTEGER ," +

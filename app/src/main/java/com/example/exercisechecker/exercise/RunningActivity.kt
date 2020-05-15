@@ -20,7 +20,8 @@ class RunningActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_running)
-
+        
+        // フラグメント表示
         val fragment = titleFragment as? TitleFragment
         fragment?.setTitle("ランニング")
 
@@ -32,6 +33,7 @@ class RunningActivity : AppCompatActivity() {
             null)
         c.moveToFirst()
 
+        // アダプター作成
         val adapter = SimpleCursorAdapter(
             this,
             android.R.layout.simple_list_item_2,
@@ -40,9 +42,11 @@ class RunningActivity : AppCompatActivity() {
             intArrayOf(android.R.id.text1, android.R.id.text2)
         )
 
+        // リストビューに表示
         val listView = findViewById<ListView>(R.id.runningList)
         listView.adapter = adapter
 
+        // 保存ボタン
         saveButton.setOnClickListener {
             val count = runningEdit.text.toString().toInt()   // ここ怪しい 多分一回toStringしないと無理っぽい
             val date = DateManager().getCurrentDate()

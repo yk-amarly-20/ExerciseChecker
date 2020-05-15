@@ -21,10 +21,12 @@ class HaikinActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_haikin)
-
+        
+        // タイトルフラグメント
         val fragment = titleFragment as? TitleFragment
         fragment?.setTitle("背筋")
 
+        // sql関係の諸々
         val sqlHelper = ExerciseHelper(this)
         val database = sqlHelper.readableDatabase
 
@@ -38,6 +40,7 @@ class HaikinActivity : AppCompatActivity() {
 
         c.moveToFirst()
 
+        // アダプター作成
         val adapter = SimpleCursorAdapter(
             this,
             android.R.layout.simple_list_item_2,
@@ -46,6 +49,7 @@ class HaikinActivity : AppCompatActivity() {
             intArrayOf(android.R.id.text1, android.R.id.text2)
         )
 
+        // リストビューに表示
         val listView = findViewById<ListView>(R.id.haikinList)
         listView.adapter = adapter
 

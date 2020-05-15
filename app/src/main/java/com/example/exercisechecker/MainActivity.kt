@@ -20,10 +20,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        
+        // タイトルフラグメント
         val fragment = titleFragment as? TitleFragment
         fragment?.setTitle("運動管理アプリ")
+        
 
+        // 各運動名のボタンを押すとページ遷移
         hukkinButton.setOnClickListener {
             val intent = Intent(this, HukkinActivity::class.java)
             startActivity(intent)

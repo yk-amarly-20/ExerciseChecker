@@ -6,7 +6,8 @@ import android.provider.BaseColumns
 データベース全体の情報を、インナークラスとして保持
  */
 object DBContract {
-
+    
+    // それぞれのクラスについて実装
     class HukkinEntry : BaseColumns {
         companion object {
             const val TABLE_NAME = "hukkin"

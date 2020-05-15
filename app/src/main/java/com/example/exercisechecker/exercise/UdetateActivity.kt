@@ -23,12 +23,11 @@ class UdetateActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_udetate)
 
-        /*
-        腹筋で実装できたらあとはほぼコピペ
-         */
+        // タイトルフラグメント
         val fragment = titleFragment as? TitleFragment
         fragment?.setTitle("腕立て")
-
+        
+        // sql関係の諸々
         val sqlHelper = ExerciseHelper(this)
         val database = sqlHelper.readableDatabase
 
@@ -38,6 +37,7 @@ class UdetateActivity : AppCompatActivity() {
 
         c.moveToFirst()
 
+        // アダプター作成
         val adapter = SimpleCursorAdapter(
             this,
             android.R.layout.simple_list_item_2,
@@ -46,9 +46,11 @@ class UdetateActivity : AppCompatActivity() {
             intArrayOf(android.R.id.text1, android.R.id.text2)
         )
 
+        // リストビューに表示
         val listview = findViewById<ListView>(R.id.udetateList)
         listview.adapter = adapter
 
+        // 保存ボタン
         saveButton.setOnClickListener {
             val count = udetateEdit.text.toString().toInt()   // ここ怪しい 多分一回toStringしないと無理っぽい
             val date = DateManager().getCurrentDate()
